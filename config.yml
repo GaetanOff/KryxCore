@@ -1,0 +1,89 @@
+#Configuration du scoreboard
+#Update in seconds
+scoreboard:
+  update: 6
+  title: '&f&l◆ &6&lKryxMC &f&l◆'
+  line:
+    - '&a&l&f'
+    - '&f&l&6&l%player_name%'
+    - ' &e┃ &fGrade: %grade%'
+    - ' &e┃ &fArgent: &e$%money%'
+    - ' &e┃ &fCrédit: &e%player_points%⛃'
+    - ' &e┃ &fFaction: &e%faction%'
+    - ' '
+    - '&f&l&6&lServeur'
+    - ' &e┃ &fVoteParty: &d%vote_party%&f'
+    - ' &e┃ &fBoutique: &e&l/vip'
+    - '&a'
+    - '&7play.kryxmc.fr'
+
+
+#Auto message
+#Delay in seconds
+auto-message:
+  delay: 120
+  messages:
+    - "&f\n&6&lKryxMC &f&l» &fInforme-toi des &eactualités &fdu serveur sur \n&fnotre &eDiscord &f!\n &f"
+    - "&f\n&6&lKryxMC &f&l» &fLes meilleurs &efactions &fgagnent des &elots &fà la fin \n&fde la version !\n &f"
+
+#Commands
+commands:
+  vote:
+    message:
+      - ''
+      - '&6&lKryxMC &f&l» &ehttps://kryxmc.fr/vote'
+      - ''
+  site:
+    message:
+      - ''
+      - '&6&lKryxMC &f&l» &ehttps://kryxmc.fr/'
+      - ''
+  discord:
+    message:
+      - ''
+      - '&6&lKryxMC &f&l» &ehttps://discord.kryxmc.fr/'
+      - ''
+
+#VoteParty
+voteparty:
+  now: 0
+  max: 300
+  reward:
+    money: 20000
+    message: '&6&lKryxMC &f&l» &aVote-Party atteint. Vous venez de recevoir $20,000 !'
+#Chat Reaction
+#Delay in seconds
+chat-reaction:
+  delay: 900
+  delayToReply: 30
+  showMessage: "&6&lKryxMC &f&l» &eVeuillez remettre dans l'ordre le mot &6%message% &e!"
+  replyMessage: "&6&lKryxMC &f&l» &cPersonne n'a répondu, le mot était &e%message%&c."
+  rewardMessage: "&6&lKryxMC &f&l» &eBien joué à &6%player% &equi a gagné en &6%time%&e secondes !"
+  reward: "eco give %player% 1000"
+  messages:
+    - "Cobblestone"
+    - "Pterodactyl"
+    - "Mammouth"
+    - "Dinosaure"
+
+#Cooldown
+#Delay in seconds
+cooldown:
+  goldenapple:
+    normal: 10
+    cheat: 10
+  randomtp: 3600
+  enderpearl: 13
+
+#Join event
+join:
+  enabled: true
+  clearchat: true
+  messages:
+    - ""
+    - ""
+
+#Broadcast
+broadcast:
+  message: "&7[&a&lBroadcast&7] %player% %message%"
+  server: "Server"
