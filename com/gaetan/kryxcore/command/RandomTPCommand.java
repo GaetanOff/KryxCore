@@ -5,6 +5,7 @@ import com.gaetan.api.command.utils.annotation.Command;
 import com.gaetan.api.command.utils.command.Context;
 import com.gaetan.api.command.utils.target.CommandTarget;
 import com.gaetan.api.message.Message;
+import com.gaetan.api.runnable.TaskUtil;
 import com.gaetan.kryxcore.CorePlugin;
 import com.gaetan.kryxcore.enums.Lang;
 import org.bukkit.Effect;
@@ -43,25 +44,29 @@ public final class RandomTPCommand {
      */
     @Command(name = "randomtp", aliases = "rtp", target = CommandTarget.PLAYER)
     public void handleCommand(final Context<ConsoleCommandSender> context) {
-        final Player player = (Player) context.getSender();
-        final long now = System.currentTimeMillis();
+        this.corePlugin.getManagerHandler().getThreadManager().getThreadPool().execute(() -> {
+            final Player player = (Player) context.getSender();
+            final long now = System.currentTimeMillis();
 
-        if (this.validthrow(player, now)) {
-            final int randomRange = (int) (Math.random() * 2001.0 + 2500.0);
-            final Location location = this.corePlugin.getManagerHandler().getRandomTPManager()
-                    .findLocation(new Location(player.getWorld(), 1000.0, 0.0, 1000.0), randomRange);
+            if (this.validthrow(player, now)) {
+                final int randomRange = (int) (Math.random() * 2001.0 + 2500.0);
+                final Location location = this.corePlugin.getManagerHandler().getRandomTPManager()
+                        .findLocation(new Location(player.getWorld(), 1000.0, 0.0, 1000.0), randomRange);
 
-            if (location == null) {
-                Message.tell(player, Lang.RANDOMTP_NOLOC.getText());
-                return;
+                if (location == null) {
+                    Message.tell(player, Lang.RANDOMTP_NOLOC.getText());
+                    return;
+                }
+
+                this.lastThrow.put(player.getUniqueId(), now);
+
+                //Re-sync cuz we are not in the main thread before !
+                TaskUtil.run(() -> {
+                    player.playEffect(player.getLocation(), Effect.ENDER_SIGNAL, null);
+                    player.teleport(location);
+                });
             }
-
-            this.lastThrow.put(player.getUniqueId(), now);
-
-            player.playEffect(player.getLocation(), Effect.ENDER_SIGNAL, null);
-            player.teleport(location);
-
-        }
+        });
     }
 
     private double remainingCooldown(final Player p, final long throwTime) {
