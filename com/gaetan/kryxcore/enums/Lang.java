@@ -63,11 +63,11 @@ public enum Lang {
 
     private final String text;
 
-    public String getText() {
-        return this.text;
-    }
-
     Lang(final String text) {
         this.text = text;
+    }
+
+    public String getText() {
+        return this.text;
     }
 }

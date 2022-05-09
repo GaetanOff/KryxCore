@@ -113,8 +113,19 @@ public final class ConfigManager extends Manager {
         return this.votePartyNow;
     }
 
+    /**
+     * Setter
+     */
+    public void setVotePartyNow(final int votePartyNow) {
+        this.votePartyNow = votePartyNow;
+    }
+
     public int getVotePartyMax() {
         return this.votePartyMax;
+    }
+
+    public void setVotePartyMax(final int votePartyMax) {
+        this.votePartyMax = votePartyMax;
     }
 
     public int getVotePartyReward() {
@@ -197,25 +208,6 @@ public final class ConfigManager extends Manager {
         return this.spawn;
     }
 
-    public String getBrMessage() {
-        return this.brMessage;
-    }
-
-    public String getBrServer() {
-        return this.brServer;
-    }
-
-    /**
-     * Setter
-     */
-    public void setVotePartyNow(final int votePartyNow) {
-        this.votePartyNow = votePartyNow;
-    }
-
-    public void setVotePartyMax(final int votePartyMax) {
-        this.votePartyMax = votePartyMax;
-    }
-
     /**
      * Setter to set the spawn location.
      *
@@ -226,5 +218,13 @@ public final class ConfigManager extends Manager {
 
         this.handler.getCorePlugin().getConfig().set("spawn", Serialize.serializeLocation(spawn));
         this.handler.getCorePlugin().saveConfig();
+    }
+
+    public String getBrMessage() {
+        return this.brMessage;
+    }
+
+    public String getBrServer() {
+        return this.brServer;
     }
 }

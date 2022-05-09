@@ -14,12 +14,12 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 
 public final class TeleportRunnable extends BukkitRunnable {
-    private int counter;
     private final Player player;
     private final PlayerData playerData;
     private final CorePlugin corePlugin;
     private final Location loc;
     private final String type;
+    private int counter;
 
     public TeleportRunnable(final int counter, final PlayerData playerData, final CorePlugin corePlugin, final String type) {
         this.counter = counter;

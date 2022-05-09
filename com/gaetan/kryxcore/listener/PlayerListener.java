@@ -1,6 +1,5 @@
 package com.gaetan.kryxcore.listener;
 
-import com.gaetan.api.RandomUtil;
 import com.gaetan.api.message.Message;
 import com.gaetan.api.runnable.TaskUtil;
 import com.gaetan.kryxcore.CorePlugin;
@@ -10,7 +9,6 @@ import com.gaetan.kryxcore.manager.managers.ReactionManager;
 import com.gaetan.kryxcore.manager.managers.StaffManager;
 import net.milkbowl.vault.chat.Chat;
 import org.bukkit.GameMode;
-import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

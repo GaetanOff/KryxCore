@@ -27,19 +27,18 @@ public final class PlayerData {
     private final CorePlugin corePlugin;
 
     private final Player player;
+    private final Inventory bagPack;
     private boolean staffMode;
     private ItemStack[] lastInventory, lastArmor;
     private boolean vanish;
     private boolean freeze;
     private boolean invest;
-
     private boolean atoutHaste,
             atoutJumpBoost,
             atoutSpeed,
             atoutWater,
             atoutStrenght,
             atoutFireRes;
-    private final Inventory bagPack;
 
     /**
      * Constructor for the PlayerData class.
@@ -169,6 +168,35 @@ public final class PlayerData {
     }
 
     /**
+     * Check Atout
+     */
+    public void checkAtout() {
+        TaskUtil.run(() -> {
+            if (this.atoutHaste)
+                this.player.addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, Integer.MAX_VALUE, 1));
+
+            if (this.atoutSpeed)
+                this.player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, Integer.MAX_VALUE, 1));
+
+            if (this.atoutStrenght)
+                this.player.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, Integer.MAX_VALUE, 0));
+
+            if (this.atoutFireRes)
+                this.player.addPotionEffect(new PotionEffect(PotionEffectType.FIRE_RESISTANCE, Integer.MAX_VALUE, 1));
+
+            if (this.atoutWater)
+                this.player.addPotionEffect(new PotionEffect(PotionEffectType.WATER_BREATHING, Integer.MAX_VALUE, 1));
+        });
+    }
+
+    /**
+     * Getter
+     */
+    public boolean isStaffMode() {
+        return this.staffMode;
+    }
+
+    /**
      * Setter to set the status of the staff mode
      */
     public void setStaffMode(final boolean state) {
@@ -217,45 +245,31 @@ public final class PlayerData {
         }
     }
 
-    /**
-     * Check Atout
-     */
-    public void checkAtout() {
-        TaskUtil.run(() -> {
-            if (this.atoutHaste)
-                this.player.addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, Integer.MAX_VALUE, 1));
-
-            if (this.atoutSpeed)
-                this.player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, Integer.MAX_VALUE, 1));
-
-            if (this.atoutStrenght)
-                this.player.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, Integer.MAX_VALUE, 0));
-
-            if (this.atoutFireRes)
-                this.player.addPotionEffect(new PotionEffect(PotionEffectType.FIRE_RESISTANCE, Integer.MAX_VALUE, 1));
-
-            if (this.atoutWater)
-                this.player.addPotionEffect(new PotionEffect(PotionEffectType.WATER_BREATHING, Integer.MAX_VALUE, 1));
-        });
-    }
-
-    /**
-     * Getter
-     */
-    public boolean isStaffMode() {
-        return this.staffMode;
-    }
-
     public boolean isVanish() {
         return this.vanish;
+    }
+
+    public void setVanish(final boolean state) {
+        this.vanish = state;
     }
 
     public boolean isFreeze() {
         return this.freeze;
     }
 
+    /**
+     * Setter
+     */
+    public void setFreeze(final boolean state) {
+        this.freeze = state;
+    }
+
     public boolean isInvest() {
         return this.invest;
+    }
+
+    public void setInvest(final boolean invest) {
+        this.invest = invest;
     }
 
     public Player getPlayer() {
@@ -266,66 +280,51 @@ public final class PlayerData {
         return this.atoutHaste;
     }
 
-    public boolean isAtoutJumpBoost() {
-        return this.atoutJumpBoost;
-    }
-
-    public boolean isAtoutSpeed() {
-        return this.atoutSpeed;
-    }
-
-    public boolean isAtoutWater() {
-        return this.atoutWater;
-    }
-
-    public boolean isAtoutStrenght() {
-        return this.atoutStrenght;
-    }
-
-    public boolean isAtoutFireRes() {
-        return this.atoutFireRes;
-    }
-
-    public Inventory getBagPack() {
-        return this.bagPack;
-    }
-
-    /**
-     * Setter
-     */
-    public void setFreeze(final boolean state) {
-        this.freeze = state;
-    }
-
-    public void setVanish(final boolean state) {
-        this.vanish = state;
-    }
-
-    public void setInvest(final boolean invest) {
-        this.invest = invest;
-    }
-
     public void setAtoutHaste(final boolean atoutHaste) {
         this.atoutHaste = atoutHaste;
+    }
+
+    public boolean isAtoutJumpBoost() {
+        return this.atoutJumpBoost;
     }
 
     public void setAtoutJumpBoost(final boolean atoutJumpBoost) {
         this.atoutJumpBoost = atoutJumpBoost;
     }
 
+    public boolean isAtoutSpeed() {
+        return this.atoutSpeed;
+    }
+
     public void setAtoutSpeed(final boolean atoutSpeed) {
         this.atoutSpeed = atoutSpeed;
+    }
+
+    public boolean isAtoutWater() {
+        return this.atoutWater;
     }
 
     public void setAtoutWater(final boolean atoutWater) {
         this.atoutWater = atoutWater;
     }
 
+    public boolean isAtoutStrenght() {
+        return this.atoutStrenght;
+    }
+
     public void setAtoutStrenght(final boolean atoutStrenght) {
         this.atoutStrenght = atoutStrenght;
     }
 
+    public boolean isAtoutFireRes() {
+        return this.atoutFireRes;
+    }
+
     public void setAtoutFireRes(final boolean atoutFireRes) {
         this.atoutFireRes = atoutFireRes;
+    }
+
+    public Inventory getBagPack() {
+        return this.bagPack;
     }
 }

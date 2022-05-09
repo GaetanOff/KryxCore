@@ -52,8 +52,7 @@ public final class CorePlugin extends SimplePlugin {
                 new ClassementCommand(this),
                 new BagPackCommand(this),
                 new BroadcastCommand(this),
-                new AnvilCommand(),
-                new PackCommand()
+                new AnvilCommand()
         );
 
         this.getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");

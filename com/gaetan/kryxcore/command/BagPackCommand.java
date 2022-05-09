@@ -31,8 +31,8 @@ public final class BagPackCommand {
      */
     @Command(name = "bagpack", aliases = "sac", permission = "bagpack.use", target = CommandTarget.PLAYER)
     public void handleCommand(final Context<ConsoleCommandSender> context) {
-        final PlayerData playerData = corePlugin.getPlayer((Player) context.getSender());
-        
+        final PlayerData playerData = this.corePlugin.getPlayer((Player) context.getSender());
+
         playerData.getPlayer().openInventory(playerData.getBagPack());
     }
 }

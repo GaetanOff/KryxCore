@@ -78,21 +78,21 @@ public final class ReactionManager extends Manager {
     }
 
     /**
-     * Setter to set the current message.
-     *
-     * @param currentMessage The current message.
-     */
-    public void setCurrentMessage(final String currentMessage) {
-        this.currentMessage = currentMessage;
-    }
-
-    /**
      * Getter to get current message.
      *
      * @return The current message
      */
     public String getCurrentMessage() {
         return this.currentMessage;
+    }
+
+    /**
+     * Setter to set the current message.
+     *
+     * @param currentMessage The current message.
+     */
+    public void setCurrentMessage(final String currentMessage) {
+        this.currentMessage = currentMessage;
     }
 
     /**

@@ -25,7 +25,7 @@ public final class VisionCommand {
     public VisionCommand(final CorePlugin corePlugin) {
         this.corePlugin = corePlugin;
     }
-    
+
     /**
      * Command to set the vision
      *
